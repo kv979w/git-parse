@@ -55,7 +55,8 @@
     "jest": "^27",
     "lerna": "4.0.0",
     "minimist": "1.2.5",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "typescript": "^4.4.4"
   },
   "files": [
     "dist"
