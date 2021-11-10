@@ -1,4 +1,3 @@
-// @flow
 import type { GitCommit, FileModification } from "./types/git_commit_type";
 import { validatePath, resolveHome } from "./util";
 import checkoutCommit from "./checkout_commit";
@@ -8,11 +7,12 @@ import parseGitLog from "./parse_git_log";
 import gitLogStream from "./git_log_stream";
 
 type gitToJsOptions = {
-  sinceCommit?: string,
+  sinceCommit?: string;
 };
 
 const gitToJs = (
   repoPath: string,
+  // @ts-expect-error ts-migrate(1015) FIXME: Parameter cannot have question mark and initialize... Remove this comment to see the full error message
   options?: gitToJsOptions = {}
 ): Promise<GitCommit[]> => {
   const resolvedPath = resolveHome(repoPath);

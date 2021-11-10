@@ -1,5 +1,3 @@
-// @flow
-
 import type {
   GitCommit,
   FileModification,
@@ -33,6 +31,7 @@ const parseCommit = (commit: string[]): GitCommit => {
     return files.reduce((accumulator, file) => {
       const match = file.match(pattern);
       if (match) {
+        // @ts-expect-error ts-migrate(2322) FIXME: Type 'string' is not assignable to type 'never'.
         accumulator.push({ path: match[1] });
       }
 
@@ -44,7 +43,9 @@ const parseCommit = (commit: string[]): GitCommit => {
     const match = file.match(renamePattern);
     if (match) {
       accumulator.push({
+        // @ts-expect-error ts-migrate(2322) FIXME: Type 'string' is not assignable to type 'never'.
         oldPath: match[1],
+        // @ts-expect-error ts-migrate(2322) FIXME: Type 'string' is not assignable to type 'never'.
         newPath: match[2],
       });
     }

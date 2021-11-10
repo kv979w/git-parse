@@ -2,7 +2,7 @@
   "allowJs": true,
   "compilerOptions": {
     // Don't emit; allow Babel to transform files.
-    "noEmit": true,
+    // "noEmit": true,
     "declaration": true,
 
     // Disallow features that require cross-file information for emit.
@@ -17,7 +17,6 @@
     "pretty": true,
     "noImplicitAny": false,
     "moduleResolution": "node",
-    "baseUrl": "resources",
     "paths": {
       "@root/*": ["./*"]
     },
@@ -25,7 +24,9 @@
     "strict": true,
     "allowUnreachableCode": true,
     "skipLibCheck": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "outDir": "./dist",
+    "rootDir": "./"
   },
   "include": ["src"],
   "exclude": ["node_modules"]

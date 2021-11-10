@@ -11,6 +11,7 @@ const gitLogFormatString = `${gitLogCommitMarker}%n%H%n%an%n%ae%n%aD%n${gitLogMe
   Returns a stream of git log data from a git repository
 */
 const gitLogStream = (pathToRepo, options = {}) => {
+  // @ts-expect-error ts-migrate(2339) FIXME: Property 'sinceCommit' does not exist on type '{}'... Remove this comment to see the full error message
   const sinceCommit = options.sinceCommit ? `${options.sinceCommit}..HEAD` : "";
   const gitParams = [
     "log",
@@ -23,7 +24,8 @@ const gitLogStream = (pathToRepo, options = {}) => {
   ].filter((elt) => elt !== "");
 
   const gitProcess = childProcess.spawn("git", gitParams, { cwd: pathToRepo });
-  const errorHandlers = [];
+  const errorHandlers: ((error: any) => void)[] = [];
+
   gitProcess.on("error", (e) => errorHandlers.forEach((handler) => handler(e)));
   return {
     stream: gitProcess.stdout,
